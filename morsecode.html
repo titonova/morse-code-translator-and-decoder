@@ -11,7 +11,6 @@
   <meta name="author" content="Amoo Titoluwa Olukiigbe">
 
   <meta property="og:title" content="Morse Code Translator and Decoder">
-  <meta property="og:type" content="website">
   <meta property="og:description" content="Morse Code Translator and Decoder">
 
 
@@ -41,10 +40,6 @@
         
     </div>
 
-
-
-
-
     <script>
         var MORSE_TO_ENG_DICT = {".-": "a", "-...":"b", "-.-.": "c", "-..": "d", ".":"e", "..-.":"f", "--.":"g", "....":"h", "..":"i", ".---":"j", "-.-":"k", ".-..":"l", "--":"m", "-.":"n", "---":"o", ".--.":"p", "--.-":"q", ".-.":"r", "...":"s", "-":"t", "..-":"u", "...-":"v", ".--":"w", "-..-":"x", "-.--":"y", "--..":"z", ".----":"1", "..---":"2", "...--":"3", "....-":"4", ".....":"5", "-....":"6", "--...":"7", "---..":"8", "----.":"9", "-----":"0", "|":" "};
         var ENG_TO_MORSE_DICT = {"a":".-","b":"-...","c":"-.-.","d":"-..","e":".","f":"..-.","g":"--.","h":"....","i":"..","j":".---","k":"-.-","l":".-..","m":"--","n":"-.","o":"---","p":".--.","q":"--.-","r":".-.","s":"...","t":"-","u":"..-","v":"...-","w":".--","x":"-..-","y":"-.--","z":"--..","1":".----","2":"..---","3":"...--","4":"....-","5":".....","6":"-....","7":"--...","8":"---..","9":"----.","0":"-----"," ":"|"};
@@ -66,8 +61,6 @@
                 morseCode = morseChars.join(" ")
            }
         
-        
-
            morse_code_textarea.value =  morseCode;
            return morseCode;
           
@@ -79,9 +72,7 @@
          
            for (let i = 0; i < morseCharacters.length; i++) {
                 char =  morseCharacters[i];
-                
-        
-              //  console.log(char +"to morse is "+morseCharacters[i].replace(char,MORSE_TO_ENG_DICT[char]))
+
                 textChar = morseCharacters[i].replace(char,MORSE_TO_ENG_DICT[char]);
                 
                 textChars.push(textChar);
@@ -94,11 +85,7 @@
            return engText;
         }
         
-        
-        
-        //console.log(encodeToMorse("hey"));
-        
-        //console.log(decodeToEng(".... . -.--"));
+
         </script>
 </body>
 </html>
