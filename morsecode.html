@@ -1,0 +1,105 @@
+
+<!doctype html>
+
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <title>Morse Code Translator and Decoder</title>
+  <meta name="description" content="Encode and Decode Morse code easily!">
+  <meta name="author" content="Amoo Titoluwa Olukiigbe">
+
+  <meta property="og:title" content="Morse Code Translator and Decoder">
+  <meta property="og:type" content="website">
+  <meta property="og:description" content="Morse Code Translator and Decoder">
+
+
+  <!-- Latest compiled and minified CSS -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+
+</head>
+
+<body>
+
+
+    <div class="container-fluid text-center">
+        <h5>Morse code translator and encoder</h5>
+        <small> By Tito Amoo from Synergy Guild for MLH prohect</small>
+        <div class="row">
+            <div class="col col-md-offset-2 col-md-4 form-group">
+                <label for="eng_text"">English text</label>
+                <textarea class="form-control" id="eng_text"   oninput="encodeToMorse(this.value)" onchange="encodeToMorse(this.value)"></textarea>
+            </div>
+
+            <div class=" col col-md-4 form-group">
+                <label>Morse Code</label>
+                <textarea id="morse_code"   oninput="decodeToEng(this.value)" onchange="decodeToEng(this.value)" class="form-control"></textarea>
+            </div>
+        </div>
+
+        
+    </div>
+
+
+
+
+
+    <script>
+        var MORSE_TO_ENG_DICT = {".-": "a", "-...":"b", "-.-.": "c", "-..": "d", ".":"e", "..-.":"f", "--.":"g", "....":"h", "..":"i", ".---":"j", "-.-":"k", ".-..":"l", "--":"m", "-.":"n", "---":"o", ".--.":"p", "--.-":"q", ".-.":"r", "...":"s", "-":"t", "..-":"u", "...-":"v", ".--":"w", "-..-":"x", "-.--":"y", "--..":"z", ".----":"1", "..---":"2", "...--":"3", "....-":"4", ".....":"5", "-....":"6", "--...":"7", "---..":"8", "----.":"9", "-----":"0", "|":" "};
+        var ENG_TO_MORSE_DICT = {"a":".-","b":"-...","c":"-.-.","d":"-..","e":".","f":"..-.","g":"--.","h":"....","i":"..","j":".---","k":"-.-","l":".-..","m":"--","n":"-.","o":"---","p":".--.","q":"--.-","r":".-.","s":"...","t":"-","u":"..-","v":"...-","w":".--","x":"-..-","y":"-.--","z":"--..","1":".----","2":"..---","3":"...--","4":"....-","5":".....","6":"-....","7":"--...","8":"---..","9":"----.","0":"-----"," ":"|"};
+        
+        var eng_text_textarea = document.getElementById("eng_text")
+        var morse_code_textarea = document.getElementById("morse_code")
+
+
+        function encodeToMorse(text){
+           var  textCharacters  = text.split("");
+           var  morseChars = []; 
+         
+           for (let i = 0; i < textCharacters.length; i++) {
+                char =  textCharacters[i];
+                morseChar = textCharacters[i].replace(char,ENG_TO_MORSE_DICT[char])
+                
+                morseChars.push(morseChar);
+        
+                morseCode = morseChars.join(" ")
+           }
+        
+        
+
+           morse_code_textarea.value =  morseCode;
+           return morseCode;
+          
+        }
+        
+        function decodeToEng(morse){
+           var  morseCharacters  = morse.split(" ");
+           var  textChars = []; 
+         
+           for (let i = 0; i < morseCharacters.length; i++) {
+                char =  morseCharacters[i];
+                
+        
+              //  console.log(char +"to morse is "+morseCharacters[i].replace(char,MORSE_TO_ENG_DICT[char]))
+                textChar = morseCharacters[i].replace(char,MORSE_TO_ENG_DICT[char]);
+                
+                textChars.push(textChar);
+        
+                engText = textChars.join("")
+               
+           }
+        
+           eng_text_textarea.value =  engText;
+           return engText;
+        }
+        
+        
+        
+        //console.log(encodeToMorse("hey"));
+        
+        //console.log(decodeToEng(".... . -.--"));
+        </script>
+</body>
+</html>
+
